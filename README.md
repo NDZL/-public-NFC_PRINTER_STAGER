@@ -2,8 +2,9 @@
 the public version, just the apk released, of the private repo https://github.com/NDZL/NFC_PRINTER_STAGER
 
 NFC_PRINTER_STAGER aims at easing staging of Zebra printers, exploiting NFC and BT connections.
+
 Instructions:
-- bump a NFC-enable device into a Zebra printer
+- bump a NFC-enabled device into a Zebra printer
 - ensure your device has the BT on
 - fill in one of the 4 slots (which have persistent memory) with any SGD/ZPL code
 -- some predefined weblink endpoints come by default
@@ -19,6 +20,9 @@ Features Roadmap:
 - Objects transfer (e.g. weblink certificates)
 - Analytics 
 - Logs retrieving (e.g. weblink logs)
+
+License:
+- MIT
 
 Feel free to feedback any comments or NIR (new feature request)
 Thank you for using NFC_PRINTER_STAGER!
