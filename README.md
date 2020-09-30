@@ -7,11 +7,11 @@ Instructions:
 - bump a NFC-enabled device into a Zebra printer
 - ensure your device has the BT on
 - fill in one of the 4 slots (which have persistent memory) with any SGD/ZPL code
--- some predefined weblink endpoints come by default
+> * some predefined weblink endpoints come by default
 - finally press one of the 3 BT buttons to try sending that code to the printer, the choice depends on the printer model and LinkOs version.
--- BTLE => Bluetooth Low Energy APIs are used
--- BT-I => Classic BT with Insecure API (https://techdocs.zebra.com/link-os/2-12/android/content/com/zebra/sdk/comm/BluetoothConnectionInsecure.html): on some printers might not ask PIN checking
--- BT-S => Classic BT with secured API (PIN always checked)
+> * BTLE => Bluetooth Low Energy APIs are used
+> * BT-I => Classic BT with Insecure API (https://techdocs.zebra.com/link-os/2-12/android/content/com/zebra/sdk/comm/BluetoothConnectionInsecure.html): on some printers might not ask PIN checking
+> * BT-S => Classic BT with secured API (PIN always checked)
 
 Tested on:
 - Zebra TC51 Oreo and MC22 A10
