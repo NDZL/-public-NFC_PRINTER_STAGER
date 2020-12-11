@@ -4,6 +4,10 @@
 Use button  "+L" to add locationing data to the current tab.
 Tab4 is advised for working with volatile data like locationing.
 After adding locationing data to a tab, you can edit it. E.g. the "device.location" field can by set by the user-
+On a WLAN only device, you must connect the device to a WLAN network.
+Getting the first locationing data might taking several seconds.
+Android Locationing services must be on. 
+This app and GMS must be granted locationing permissions.
 
 NFC_PRINTER_STAGER aims at easing staging of Zebra printers, exploiting NFC and BT connections.
 
