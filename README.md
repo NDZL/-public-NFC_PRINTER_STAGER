@@ -1,6 +1,6 @@
 # -public-NFC_PRINTER_STAGER
 
-v1.8 - Locationing features added.
+ <ins>v1.8 - Locationing features added.</ins>
 Use button  "+L" to add locationing data to the current tab.
 Tab4 is advised for working with volatile data like locationing.
 After adding locationing data to a tab, you can edit it. E.g. the "device.location" field can by set by the user-
