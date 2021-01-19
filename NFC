@@ -40,3 +40,19 @@ setOnTagReadListener();
 
 
         };
+        
+  @Override
+  protected void onNewIntent(Intent intent){
+      String action = intent.getAction();
+      if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+          Tag myTag = (Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+          Parcelable[] originalMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+          if (originalMessages != null) {
+              NdefRecord[] recs = ((NdefMessage) originalMessages[0]).getRecords();
+              String text = ndefRecordToString(recs[0]);
+              tagNdzlListener.onTagRead(text);
+          }
+      }
+  }
+    
+    
