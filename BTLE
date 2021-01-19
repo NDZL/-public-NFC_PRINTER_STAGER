@@ -1,0 +1,46 @@
+    private void execSGDViaBTLE(final String theBtMacAddress, final Context context, final String zplData) {
+        new Thread(new Runnable() {
+            public void run() {
+                Connection thePrinterConn = null;
+                try {
+                    isPrinterBusy = true;
+                    //////////////////////////
+                    // ARRAY TO PRINTER FILE
+
+                    thePrinterConn = new BluetoothLeConnection(theBtMacAddress, context);
+
+                    thePrinterConn.open();
+
+
+/*
+                    String zplData = "! U1 setvar \"weblink.ip.conn2.location\" \"https://demo-zebra-printer.link-os.com:443/linkos/weblink/connect/\"" ;
+                    zplData +="\r\n";
+                    zplData+= "! U1 setvar \"device.reset\" \"\"";
+                    zplData +="\r\n";
+*/
+
+
+                    if(thePrinterConn.isConnected()) {
+                        thePrinterConn.write(zplData.getBytes());
+
+
+                        //Toast.makeText(MainActivity.this, "BLTE-Data written.", Toast.LENGTH_SHORT).show();
+
+                    }
+                    isPrinterBusy = false;
+                    Thread.sleep(2000);
+                    if (null != thePrinterConn) {
+                       thePrinterConn.close();
+                    }
+                    printResult="CMD OK";
+
+                } catch (Exception e) {
+                    //Toast.makeText(MainActivity.this, "BLTE-EXCP", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                    printResult="PRINT KO - "+e.getMessage();
+                } finally {
+                    isPrinterBusy = false;
+                }
+            }
+        }).start();
+    }
