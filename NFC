@@ -1,0 +1,42 @@
+  mNfcAdapter = NfcAdapter.getDefaultAdapter(this); 
+ ...
+ mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+
+setOnTagReadListener();
+
+
+            
+    public void setOnTagReadListener() {
+        this.tagNdzlListener = new DezTagListener() {
+            @Override
+            public void onTagRead(String tagRead) {
+                //Toast.makeText(this, "tag read:"+tagRead, Toast.LENGTH_LONG).show();
+                String[] nfcrecs = tagRead.split("&");
+
+                 nfcPrinterBTaddr = "N/A";
+                 nfcPrinterPartNumber = "N/A";
+                 nfcPrinterBTFriendlyName = "N/A";
+                 isBTLE=false;
+                for (String nrec:nfcrecs) {
+                    String[] strPair = nrec.split("=");
+                    if(strPair[0].equals("mB")){  // BT STANDARD?
+                        nfcPrinterBTaddr=strPair[1];
+                        isBTLE = false;
+                    }
+                    if(strPair[0].equals("mBL")){ // BTLE?
+                        nfcPrinterBTaddr=strPair[1];
+                        isBTLE = true;
+                    }
+                    if(strPair[0].equals("c"))
+                        nfcPrinterPartNumber = strPair[1];
+                    if(strPair[0].equals("s"))
+                        nfcPrinterBTFriendlyName = strPair[1];
+                }
+
+                tvOutput.setText("BT_TYPE=<"+ (isBTLE?"BT LE":"BT STD") +">\nBTAddr=<"+nfcPrinterBTaddr+">\nP/N=<"+nfcPrinterPartNumber+">\nBT FriendlyName=<"+nfcPrinterBTFriendlyName+">");
+
+            }
+
+
+        };
